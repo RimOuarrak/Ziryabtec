@@ -24,12 +24,18 @@ export default {
     data() {
         return {
             calendarOptions: {
+                locale : "fr",
                 headerToolbar: {
                     start: "title", // will normally be on the left. if RTL, will be on the right
                     center: "",
                     end: "today prevYear,prev,next,nextYear", // will normally be on the right. if RTL, will be on the left
                 },
+                buttonText : {
+                    today : 'Aujourd\'hui',
+                   // month : "mois",
+                },
                 timeZone: "UTC",
+                //weekends : false, // to add weekends or not
                 plugins: [interactionPlugin, dayGridPlugin],
                 selectable: true,
                 initialView: "dayGridMonth",
