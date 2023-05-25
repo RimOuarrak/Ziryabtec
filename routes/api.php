@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Calendar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/appointments/findByDate/{date}", "App\Http\Controllers\AppointmentController@findByDate");
-Route::apiResource("/appointments", "App\Http\Controllers\AppointmentController");
-
+Route::post('/calendar', [App\Http\Controllers\Api\CalendarController::class, 'index']);
+Route::post('/calendar/store', [App\Http\Controllers\Api\CalendarController::class, 'store']);
+Route::post('/calendar/{id}', [App\Http\Controllers\Api\CalendarController::class, 'update']);
+Route::post('/calendar/{id}/destroy', [App\Http\Controllers\Api\CalendarController::class, 'destroy']);

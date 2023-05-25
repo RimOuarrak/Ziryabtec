@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <title>Appointments App</title> 
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar d nam</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap-4.6.0/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fullcalendar/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('app/style.css') }}">
+    <script>
+        var APP_URL = {!! json_encode(url('/')) !!}
+    </script>
 </head>
 
-<body class="antialiased">
+<body>
 
-    <div id="app">
-        <Navbar></Navbar>
-        <div>
-            <Calendar></Calendar>
-        </div>
-    </div>
+    <div id="calendar"></div>
 
-    <script src="{{mix('js/app.js')}}"></script>
+    <script src="{{ asset('app/jquery.js') }}"></script>
+    <script src="{{ asset('bootstrap-4.6.0/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('fullcalendar/main.min.js') }}"></script>
+    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('app/script.js') }}"></script>
+    @include('modal')
+    <script>
+        renderCalendar()
+    </script>
 </body>
 
 </html>
